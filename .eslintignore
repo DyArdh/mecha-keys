@@ -1,0 +1,12 @@
+node_modules
+.eslintcache
+.eslintignore
+.DS_Store
+tsconfig.json
+.next
+next-env.d.ts
+node_modules
+yarn.lock
+package-lock.json
+public
+pnpm-lock.yaml
