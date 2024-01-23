@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Linear"
+    },
+    {
+        "id": 2,
+        "name": "Tactile"
+    },
+    {
+        "id": 3,
+        "name": "Clicky"
+    },
+    {
+        "id": 4,
+        "name": "Silent Linear"
+    },
+    {
+        "id": 5,
+        "name": "Silent Tactile"
+    }
+]

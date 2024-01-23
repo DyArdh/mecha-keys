@@ -1,0 +1,10 @@
+[
+    {
+        "id": 1,
+        "name": "3-pin (Plate Mount)"
+    },
+    {
+        "id": 2,
+        "name": "5-pin (PCB Mount)"
+    }
+]
