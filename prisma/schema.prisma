@@ -48,8 +48,8 @@ model Switch {
   stem             String      @db.VarChar(50)
   bottom_housing   String      @db.VarChar(50)
   lube_id          Int
-  price            BigInt
-  mount            SwitchMount @relation(fields: [mount_id], references: [id])
-  type             SwitchType  @relation(fields: [type_id], references: [id])
-  lube             LubeStatus  @relation(fields: [lube_id], references: [id])
+  price            Float       @db.DoublePrecision
+  mount            SwitchMount @relation(fields: [mount_id], references: [id], onDelete: Cascade)
+  type             SwitchType  @relation(fields: [type_id], references: [id], onDelete: Cascade)
+  lube             LubeStatus  @relation(fields: [lube_id], references: [id], onDelete: Cascade)
 }
