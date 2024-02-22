@@ -1,13 +1,12 @@
 {
     "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint"],
+    "plugins": ["@typescript-eslint", "prettier"],
     "extends": [
         "next",
         "next/core-web-vitals",
         "eslint:recommended",
         "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:prettier/recommended"
+        "plugin:@typescript-eslint/recommended"
     ],
     "parserOptions": { "program": "tsconfig.json" },
     "rules": {
@@ -26,7 +25,6 @@
         "no-useless-catch": "off",
         "jsx-quotes": ["error", "prefer-double"],
         "space-in-parens": ["error", "never"],
-        "space-before-function-paren": ["error", "never"],
         "react/jsx-wrap-multilines": [
             "error",
             {

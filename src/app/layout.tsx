@@ -3,6 +3,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Open_Sans, Quicksand } from 'next/font/google';
 
+import Provider from './provider';
+
 const quickSand = Quicksand({
     subsets: ['latin'],
     variable: '--font-quickSand',
@@ -27,7 +29,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${quickSand.variable} ${openSans.variable} font-openSans no-scrollbar`}>{children}</body>
+            <body className={`${quickSand.variable} ${openSans.variable} font-openSans no-scrollbar`}>
+                <Provider>{children}</Provider>
+            </body>
         </html>
     );
 }

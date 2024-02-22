@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  name     String? @db.VarChar(30)
+  username String  @unique @db.VarChar(30)
+  password String  @db.VarChar(255)
+}
+
+model SwitchMount {
+  id     Int      @id @default(autoincrement())
+  name   String   @db.VarChar(30)
+  Switch Switch[]
+}
+
+model SwitchType {
+  id     Int      @id @default(autoincrement())
+  name   String   @db.VarChar(30)
+  Switch Switch[]
+}
+
+model LubeStatus {
+  id     Int      @id @default(autoincrement())
+  name   String   @db.VarChar(30)
+  Switch Switch[]
+}
+
+model Switch {
+  id               Int         @id @default(autoincrement())
+  name             String      @db.VarChar(50)
+  mount_id         Int
+  type_id          Int
+  bottom_out_force Int
+  actuation_force  Int?
+  actuation_travel Int
+  total_travel     Int
+  top_housing      String      @db.VarChar(50)
+  stem             String      @db.VarChar(50)
+  bottom_housing   String      @db.VarChar(50)
+  lube_id          Int
+  price            Float       @db.DoublePrecision
+  mount            SwitchMount @relation(fields: [mount_id], references: [id], onDelete: Cascade)
+  type             SwitchType  @relation(fields: [type_id], references: [id], onDelete: Cascade)
+  lube             LubeStatus  @relation(fields: [lube_id], references: [id], onDelete: Cascade)
+}

@@ -8,14 +8,35 @@
         "start": "next start",
         "lint": "next lint",
         "lint:format": "next lint --fix && prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "prisma:push": "npx prisma db push",
+        "prisma:seed": "tsx ./src/services/seederService.ts",
+        "prisma:reset": "tsx ./src/services/resetdbService.ts"
     },
     "dependencies": {
+        "@hookform/resolvers": "^3.3.4",
+        "@prisma/client": "5.8.1",
+        "@radix-ui/react-label": "^2.0.2",
+        "@radix-ui/react-slot": "^1.0.2",
+        "axios": "^1.6.7",
+        "bcrypt": "^5.1.1",
+        "class-variance-authority": "^0.7.0",
+        "clsx": "^2.1.0",
+        "jsonwebtoken": "^9.0.2",
+        "lucide-react": "^0.330.0",
         "next": "14.1.0",
+        "next-auth": "^4.24.6",
         "react": "^18",
-        "react-dom": "^18"
+        "react-dom": "^18",
+        "react-hook-form": "^7.50.1",
+        "swr": "^2.2.5",
+        "tailwind-merge": "^2.2.1",
+        "tailwindcss-animate": "^1.0.7",
+        "zod": "^3.22.4"
     },
     "devDependencies": {
+        "@types/bcrypt": "^5.0.2",
+        "@types/jsonwebtoken": "^9.0.5",
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
@@ -24,13 +45,15 @@
         "autoprefixer": "^10.0.1",
         "eslint": "^8",
         "eslint-config-next": "14.1.0",
-        "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-prettier": "^5.1.3",
         "husky": "^8.0.0",
         "lint-staged": "^15.2.0",
         "postcss": "^8",
         "prettier": "^3.2.4",
+        "prettier-plugin-tailwindcss": "^0.5.11",
+        "prisma": "^5.8.1",
         "tailwindcss": "^3.3.0",
+        "tsx": "^4.7.0",
         "typescript": "^5"
     }
 }
