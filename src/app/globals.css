@@ -1,26 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5 {
-        font-family: var(--font-openSans);
-    }
-
-    p {
-        font-family: var(--font-quickSand);
-    }
-}
-
-.no-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-
-.no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-}
