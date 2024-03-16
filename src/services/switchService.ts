@@ -1,4 +1,4 @@
-import prisma from '@/libs/prismaClient';
+import prisma from '@/lib/prismaClient';
 import { switchType } from '@/types/switch.type';
 import { switchSchemaType } from '@/utils/validations/switch.schema';
 

@@ -4,7 +4,7 @@ import path from 'path';
 
 import bcrypt from 'bcrypt';
 
-import prisma from '@/libs/prismaClient';
+import prisma from '@/lib/prismaClient';
 
 // Read File JSON
 function getFileJson(fileName: string): any {
