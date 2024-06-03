@@ -2,7 +2,7 @@
 
 import useSWR from 'swr';
 
-import client from '@/libs/axiosInstance';
+import client from '@/lib/axiosInstance';
 import { switchSchemaType } from '@/utils/validations/switch.schema';
 
 const Test = ({ accessToken }: { accessToken: string; }) => {
