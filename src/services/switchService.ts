@@ -1,11 +1,21 @@
-import prisma from '@/libs/prismaClient';
+import prisma from '@/lib/prismaClient';
 import { switchType } from '@/types/switch.type';
-import { switchSchemaType } from '@/utils/validations/switch.schema';
+import { switchSchemaType, switchUpdateSchemaType } from '@/utils/validations/switch.schema';
 
 export async function getAllSwitch() {
     const getAllSwitchs = await prisma.switch.findMany();
 
     return getAllSwitchs;
+}
+
+export async function getSwitchById(id: number) {
+    const getSwitch = await prisma.switch.findUnique({
+        where: {
+            id
+        }
+    });
+
+    return getSwitch;
 }
 
 export async function getSwitchForWP(type: number): Promise<switchType[]> {
@@ -44,4 +54,25 @@ export async function createSwitch(data: switchSchemaType) {
     });
 
     return createSwitchs;
+}
+
+export async function updateSwitch(id: number, data: switchUpdateSchemaType) {
+    const updateSwitchs = await prisma.switch.update({
+        where: {
+            id: id
+        },
+        data: data
+    });
+
+    return updateSwitchs;
+}
+
+export async function deleteSwitch(id: number) {
+    const deleteSwitchs = await prisma.switch.delete({
+        where: {
+            id: id
+        }
+    });
+
+    return deleteSwitchs;
 }

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-import weightedProduct from '@/libs/weightedProduct';
+import weightedProduct from '@/lib/weightedProduct';
 import { getSwitchForWP } from '@/services/switchService';
 import { switchType } from '@/types/switch.type';
 import errorHandler from '@/utils/errorHandler';

@@ -14,10 +14,12 @@
         "prisma:reset": "tsx ./src/services/resetdbService.ts"
     },
     "dependencies": {
-        "@hookform/resolvers": "^3.3.4",
+        "@hookform/resolvers": "^3.4.2",
         "@prisma/client": "5.8.1",
         "@radix-ui/react-label": "^2.0.2",
+        "@radix-ui/react-select": "^2.0.0",
         "@radix-ui/react-slot": "^1.0.2",
+        "@tanstack/react-table": "^8.17.3",
         "axios": "^1.6.7",
         "bcrypt": "^5.1.1",
         "class-variance-authority": "^0.7.0",
@@ -29,6 +31,8 @@
         "react": "^18",
         "react-dom": "^18",
         "react-hook-form": "^7.50.1",
+        "react-table": "^7.8.0",
+        "sharp": "^0.33.2",
         "swr": "^2.2.5",
         "tailwind-merge": "^2.2.1",
         "tailwindcss-animate": "^1.0.7",

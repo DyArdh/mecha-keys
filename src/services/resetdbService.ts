@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import prisma from '@/libs/prismaClient';
+import prisma from '@/lib/prismaClient';
 
 interface TableNames {
     tableNames: string;

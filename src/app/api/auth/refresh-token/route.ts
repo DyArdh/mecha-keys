@@ -1,7 +1,7 @@
 import { JwtPayload } from 'jsonwebtoken';
 import { NextResponse } from 'next/server';
 
-import { generateToken, verifyToken } from '@/libs/auth';
+import { generateToken, verifyToken } from '@/lib/auth';
 
 export async function POST(req: Request) {
     try {
@@ -17,6 +17,12 @@ export async function POST(req: Request) {
             { status: 200 }
         );
     } catch (err: any) {
-        console.log(err.message);
+        return NextResponse.json(
+            {
+                success: false,
+                message: err.message
+            },
+            { status: 500 }
+        );
     }
 }

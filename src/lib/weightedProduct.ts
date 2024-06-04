@@ -70,13 +70,13 @@ function normalizedAlternative(alternatives: switchType[], weights: weightedCrit
             const weight = weights[criterion].value;
 
             if (typeof criterionValue === 'number') {
-                const normalizedValue = Math.pow(criterionValue, weight);
+                const normalizedValue = Math.pow(criterionValue, weight).toFixed(4);
                 alternative[criterion] = normalizedValue;
-                totalS *= normalizedValue;
+                totalS *= Number(normalizedValue);
             }
         });
 
-        alternative.totalS = totalS;
+        alternative.totalS = totalS.toFixed(4);
 
         return alternative;
     });
@@ -87,10 +87,16 @@ function calculateWeightedProduct(alternatives: switchAlternativeType[]) {
 
     const rankedAlternatives = alternatives.map((alternative) => ({
         ...alternative,
-        v: (alternative.totalS ?? 0) / totalValueS
+        v: ((alternative.totalS ?? 0) / totalValueS).toFixed(4)
     }));
 
-    return rankedAlternatives.sort((a, b) => b.v - a.v);
+    const sortedAlternatives = rankedAlternatives.sort((a, b) => Number(b.v) - Number(a.v));
+
+    sortedAlternatives.forEach((alternative, index) => {
+        alternative.rank = index + 1;
+    });
+
+    return sortedAlternatives;
 }
 
 function weightedProduct(

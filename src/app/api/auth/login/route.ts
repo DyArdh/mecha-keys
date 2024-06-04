@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import { JwtPayload } from 'jsonwebtoken';
 import { NextResponse } from 'next/server';
 
-import { generateToken, verifyToken } from '@/libs/auth';
+import { generateToken, verifyToken } from '@/lib/auth';
 import { getUser } from '@/services/auth.service';
 
 export async function POST(req: Request) {
@@ -33,7 +33,7 @@ export async function POST(req: Request) {
             );
         }
 
-        const generateAccessToken = generateToken({ username: user.username }, '10s');
+        const generateAccessToken = generateToken({ username: user.username }, '10m');
         const generateRefreshToken = generateToken({ username: user.username }, '7d');
 
         const verifyAccessToken = verifyToken(generateAccessToken) as JwtPayload;
@@ -49,6 +49,12 @@ export async function POST(req: Request) {
             }
         });
     } catch (err: any) {
-        console.log(err.message);
+        return NextResponse.json(
+            {
+                success: false,
+                message: err.message
+            },
+            { status: 500 }
+        );
     }
 }

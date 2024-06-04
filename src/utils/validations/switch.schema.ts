@@ -33,3 +33,46 @@ export const switchSchema = z.object({
 });
 
 export type switchSchemaType = z.infer<typeof switchSchema>;
+
+export const switchUpdateSchema = z.object({
+    name: z
+        .string({ invalid_type_error: 'Name must be a string' })
+        .max(50, {
+            message: 'Name must be less than or equal to 50 characters'
+        })
+        .optional(),
+    mount_id: z.number({ invalid_type_error: 'Mount must be a number' }).optional(),
+    type_id: z.number({ invalid_type_error: 'Type must be a number' }).optional(),
+    bottom_out_force: z
+        .number({
+            invalid_type_error: 'Bottom out force must be a number'
+        })
+        .optional(),
+    actuation_force: z.number({ invalid_type_error: 'Actuation force must be a number' }).optional(),
+    actuation_travel: z
+        .number({
+            invalid_type_error: 'Actuation travel must be a number'
+        })
+        .optional(),
+    total_travel: z
+        .number({
+            invalid_type_error: 'Total travel must be a number'
+        })
+        .optional(),
+    top_housing: z
+        .string({ invalid_type_error: 'Top housing must be a string' })
+        .max(50, { message: 'Top housing must be less than or equal to 50 characters' })
+        .optional(),
+    stem: z
+        .string({ invalid_type_error: 'Stem must be a string' })
+        .max(50, { message: 'Stem must be less than or equal to 50 characters' })
+        .optional(),
+    bottom_housing: z
+        .string({ invalid_type_error: 'Bottom housing must be a string' })
+        .max(50, { message: 'Bottom housing must be less than or equal to 50 characters' })
+        .optional(),
+    lube_id: z.number({ invalid_type_error: 'Lube must be a number' }).optional(),
+    price: z.number({ invalid_type_error: 'Price must be a number' }).optional()
+});
+
+export type switchUpdateSchemaType = z.infer<typeof switchUpdateSchema>;
