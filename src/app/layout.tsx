@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { Open_Sans, Quicksand } from 'next/font/google';
 
 import Navbar from '@/components/Navbar';
+import { ResultProvider } from '@/utils/hooks/resultContext';
 
 import Provider from './provider';
 
@@ -33,8 +34,10 @@ export default function RootLayout({
         <html lang="en">
             <body className={`${quickSand.variable} ${openSans.variable} no-scrollbar font-openSans`}>
                 <Provider>
-                    <Navbar />
-                    {children}
+                    <ResultProvider>
+                        <Navbar />
+                        {children}
+                    </ResultProvider>
                 </Provider>
             </body>
         </html>

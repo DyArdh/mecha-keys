@@ -18,6 +18,7 @@ interface switchAlternativeType {
     lube_id: number;
     price: number;
     totalS?: number;
+    rank?: number;
 }
 
 export type { switchType, switchAlternativeType };

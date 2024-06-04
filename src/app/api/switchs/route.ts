@@ -5,16 +5,8 @@ import { createSwitch, getAllSwitch } from '@/services/switchService';
 import errorHandler from '@/utils/errorHandler';
 import { switchSchema } from '@/utils/validations/switch.schema';
 
-export async function GET(req: Request) {
+export async function GET() {
     try {
-        const token = req.headers.get('Authorization')?.split(' ')[1] || '';
-
-        const verify = !token || jwt.verify(token, process.env.NEXTAUTH_SECRET || '');
-
-        if (!verify) {
-            return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
-        }
-
         const switchs = await getAllSwitch();
 
         return NextResponse.json({ success: true, data: switchs }, { status: 200 });
@@ -22,7 +14,8 @@ export async function GET(req: Request) {
         if (error instanceof JsonWebTokenError) {
             return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
         } else {
-            return errorHandler(error);
+            const errMessage = errorHandler(error);
+            return NextResponse.json({ success: false, message: errMessage.message }, { status: errMessage.status });
         }
     }
 }
@@ -33,7 +26,7 @@ export async function POST(req: Request) {
 
         const verify = !token || jwt.verify(token, process.env.NEXTAUTH_SECRET || '');
 
-        if (verify) {
+        if (!verify) {
             return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
         }
 
@@ -51,7 +44,8 @@ export async function POST(req: Request) {
         const create = await createSwitch(validate.data);
 
         return NextResponse.json({ success: true, data: create }, { status: 200 });
-    } catch (err) {
-        errorHandler(err);
+    } catch (err: any) {
+        const errMessage = errorHandler(err);
+        return NextResponse.json({ success: false, message: errMessage.message }, { status: errMessage.status });
     }
 }
