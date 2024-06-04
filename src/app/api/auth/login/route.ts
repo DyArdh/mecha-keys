@@ -33,7 +33,7 @@ export async function POST(req: Request) {
             );
         }
 
-        const generateAccessToken = generateToken({ username: user.username }, '10s');
+        const generateAccessToken = generateToken({ username: user.username }, '10m');
         const generateRefreshToken = generateToken({ username: user.username }, '7d');
 
         const verifyAccessToken = verifyToken(generateAccessToken) as JwtPayload;

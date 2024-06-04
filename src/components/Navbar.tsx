@@ -15,7 +15,7 @@ interface navProps {
 const navLinkData = [
     { name: 'Home', path: '/' },
     { name: 'Switch', path: '/switch' },
-    { name: 'Rekomendasi', path: '/rekomendasi' }
+    { name: 'Rekomendasi', path: '/calculate' }
 ];
 
 function NavLink({ navOpen }: navProps) {
@@ -53,6 +53,7 @@ function NavLink({ navOpen }: navProps) {
 
 export default function Navbar() {
     const [navOpen, setNavOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
     const pathName = usePathname();
 
     useEffect(() => {
@@ -77,9 +78,27 @@ export default function Navbar() {
         };
     }, []);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 1) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <>
-            <nav className="fixed z-50 w-full bg-transparent">
+            <nav
+                className={`fixed z-50 w-full bg-transparent transition-colors duration-300 ${scrolled ? 'bg-white shadow-md' : ''}`}
+            >
                 <div className="container flex items-center justify-between px-5 py-4 md:px-[110px]">
                     <h1 className="text-xl font-bold">
                         Mecha<span className="text-yellow-second">Switch</span>

@@ -2,23 +2,23 @@ import { z } from 'zod';
 
 export const weightSchema = z.object({
     bottom_out_force: z.object({
-        value: z.number().min(1).max(2),
+        value: z.number().min(1).max(10),
         attribute: z.enum(['cost', 'benefit'])
     }),
     actuation_travel: z.object({
-        value: z.number().min(1).max(2),
+        value: z.number().min(1).max(10),
         attribute: z.enum(['cost', 'benefit'])
     }),
     total_travel: z.object({
-        value: z.number().min(1).max(2),
+        value: z.number().min(1).max(10),
         attribute: z.enum(['cost', 'benefit'])
     }),
     lube_id: z.object({
-        value: z.number().min(1).max(2),
+        value: z.number().min(1).max(10),
         attribute: z.enum(['cost', 'benefit'])
     }),
     price: z.object({
-        value: z.number().min(1).max(2),
+        value: z.number().min(1).max(10),
         attribute: z.enum(['cost', 'benefit'])
     })
 });
@@ -53,6 +53,14 @@ export const alternativeWeightSchema = z.object({
 });
 
 export const typeSchema = z.number();
+
+export const formSchema = z.object({
+    type: typeSchema,
+    weights: weightSchema,
+    alternativeWeights: alternativeWeightSchema
+});
+
 export type weightSchemaType = z.infer<typeof weightSchema>;
 export type alternativeWeightSchemaType = z.infer<typeof alternativeWeightSchema>;
 export type typeSchemaType = z.infer<typeof typeSchema>;
+export type formSchemaType = z.infer<typeof formSchema>;
